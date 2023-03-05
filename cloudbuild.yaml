@@ -1,8 +1,4 @@
 steps:
-  - id: "Run test"
-    name: gcr.io/cloud-builders/gcloud
-    entrypoint: "bash"
-    args: ["./test.sh"]
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
@@ -10,6 +6,16 @@ steps:
         "-t",
         "asia-east1-docker.pkg.dev/test-cloud-build-379706/quickstart-docker-repo/quickstart-image:tag1",
         ".",
+      ]
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "run",
+        "-it",
+        "asia-east1-docker.pkg.dev/test-cloud-build-379706/quickstart-docker-repo/quickstart-image:tag1",
+        "python",
+        "manage.py",
+        "test",
       ]
 images:
   - "asia-east1-docker.pkg.dev/test-cloud-build-379706/quickstart-docker-repo/quickstart-image:tag1"
