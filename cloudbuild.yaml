@@ -11,7 +11,6 @@ steps:
     args:
       [
         "run",
-        "-it",
         "asia-east1-docker.pkg.dev/test-cloud-build-379706/quickstart-docker-repo/quickstart-image:tag1",
         "python",
         "manage.py",
